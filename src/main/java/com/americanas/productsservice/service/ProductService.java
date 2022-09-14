@@ -6,6 +6,9 @@ import com.americanas.productsservice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ProductService {
 
     @Autowired
@@ -17,6 +20,10 @@ public class ProductService {
             return product;
         }
         throw new ProductNotFoundException(HttpStatus.NOT_FOUND, "Product not found");
+    }
+
+    public Product create(Product product) {
+        return repository.save(product);
     }
 
 }
