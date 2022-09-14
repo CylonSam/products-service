@@ -6,15 +6,17 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "product")
+
+
 @Getter
 @Setter
+@Entity
+@Table(name = "product")
 public class Product {
 
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @NonNull
     @Column(name = "name", nullable = false)
     private String name;
@@ -22,7 +24,7 @@ public class Product {
     @Column(name = "price", nullable = false)
     private double price;
 
-    public Product(String id, String name, double price) {
+    public Product(long id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
