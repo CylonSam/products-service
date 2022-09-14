@@ -22,6 +22,14 @@ public class ProductService {
         throw new ProductNotFoundException(HttpStatus.NOT_FOUND, "Product not found");
     }
 
+    public Product getProductByName(String name) {
+        Product product = repository.findByName(name);
+        if (product != null) {
+            return product;
+        }
+        throw new ProductNotFoundException(HttpStatus.NOT_FOUND, "Product not found");
+    }
+
     public Product create(Product product) {
         return repository.save(product);
     }

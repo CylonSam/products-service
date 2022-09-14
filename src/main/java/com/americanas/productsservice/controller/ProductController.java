@@ -17,4 +17,15 @@ public class ProductController {
     public Product create(@RequestBody Product product) {
         return productService.create(product);
     }
+
+    @GetMapping("/{id}")
+    public Product getProduct(Long id) {
+        return productService.getProductById(id);
+    }
+
+    @GetMapping("/{name}")
+    public Product getProductByName(String name) {
+        return productService.getProductByName(name);
+    }
+
 }
