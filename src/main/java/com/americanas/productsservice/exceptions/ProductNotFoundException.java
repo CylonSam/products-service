@@ -1,0 +1,11 @@
+package com.americanas.productsservice.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+public class ProductNotFoundException extends ResponseStatusException {
+
+    public ProductNotFoundException(HttpStatus statusCode, String message) {
+        super(statusCode, message);
+    }
+}
