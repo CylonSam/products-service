@@ -11,8 +11,8 @@ public class ProductService {
     @Autowired
     private ProductRepository repository;
 
-    public Product getProductById(String id) {
-        Product product = repository.getReferenceById(id);
+    public Product getProductById(Long id) {
+        Product product = repository.getReferenceById(String.valueOf(id));
         if (product != null) {
             return product;
         }
