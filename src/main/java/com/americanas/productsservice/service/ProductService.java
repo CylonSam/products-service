@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ProductService {
@@ -15,7 +16,7 @@ public class ProductService {
     private ProductRepository repository;
 
     public Product getProductById(Long id) {
-        Product product = repository.getReferenceById(String.valueOf(id));
+        Product product = repository.findById(id);
         if (product != null) {
             return product;
         }
@@ -23,6 +24,16 @@ public class ProductService {
     }
 
     public Product create(Product product) {
+        Product productAlreadyExists = repository.findByName(product.getName());
+
+        if (productAlreadyExists != null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product already exists");
+        }
+
+        return repository.save(product);
+    }
+
+    public Product update(Product product) {
         return repository.save(product);
     }
 
