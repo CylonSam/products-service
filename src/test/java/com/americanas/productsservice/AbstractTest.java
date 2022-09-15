@@ -1,4 +1,4 @@
-package com.americanas;
+package com.americanas.productsservice;
 
 import org.apache.commons.io.IOUtils;
 import com.jayway.jsonpath.Configuration;
@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 
