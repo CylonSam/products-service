@@ -1,4 +1,4 @@
-package com.americanas.productsservice;
+package com.americanas;
 
 import org.apache.commons.io.IOUtils;
 import com.jayway.jsonpath.Configuration;
@@ -10,29 +10,26 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
-
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @ContextConfiguration
-//@AutoConfigureWireMock(port = 9000)
+// @AutoConfigureWireMock(port = 9000)
 
 public abstract class AbstractTest {
 
     @Autowired
     protected MockMvc mockMvc;
 
-    @Autowired
-    protected WebTestClient webTestClient;
-
+    // @Autowired
+    // protected WebTestClient webTestClient;
 
     private static final Configuration configuration = Configuration.builder()
             .jsonProvider(new JacksonJsonNodeJsonProvider())
@@ -54,8 +51,8 @@ public abstract class AbstractTest {
      * @return json modified
      */
     protected static String modifyPayload(final String field,
-                                          final Object value,
-                                          final String payload) {
+            final Object value,
+            final String payload) {
         return JsonPath
                 .using(configuration)
                 .parse(payload)
@@ -65,4 +62,3 @@ public abstract class AbstractTest {
     }
 
 }
-
