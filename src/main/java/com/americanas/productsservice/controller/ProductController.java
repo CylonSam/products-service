@@ -33,6 +33,19 @@ public class ProductController {
 
         return productService.update(product);
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable Long id) {
+        var product = productService.getProductById(id);
+
+        if (product == null) {
+            throw new ProductNotFoundException(HttpStatus.BAD_REQUEST, "Product not found");
+        }
+
+        productService.delete(product);
+
+        return "Product with id #" + id + " deleted successfully";
+    }
     
     @GetMapping("/{id}")
     public Product getProduct(Long id) {

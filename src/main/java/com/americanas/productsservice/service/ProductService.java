@@ -45,4 +45,8 @@ public class ProductService {
         return repository.save(product);
     }
 
+    public void delete(Product product) {
+        repository.delete(product);
+    }
+
 }
