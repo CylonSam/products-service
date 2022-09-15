@@ -47,13 +47,13 @@ public class ProductController {
         return "Product with id #" + id + " deleted successfully";
     }
     
-    @GetMapping("/{id}")
-    public Product getProduct(Long id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Product getProduct(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
-    @GetMapping("/{name}")
-    public Product getProductByName(String name) {
+    @RequestMapping(method = RequestMethod.GET)
+    public Product getProductByName(@RequestParam(value="name") String name) {
         return productService.getProductByName(name);
     }
     
