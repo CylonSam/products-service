@@ -18,7 +18,7 @@ public class ProductController {
     public Product create(@RequestBody Product product) {
         return productService.create(product);
     }
-
+    
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Product updateById(@RequestBody Product productWithNewInfo, @PathVariable Long id) {
@@ -33,4 +33,15 @@ public class ProductController {
 
         return productService.update(product);
     }
+    
+    @GetMapping("/{id}")
+    public Product getProduct(Long id) {
+        return productService.getProductById(id);
+    }
+
+    @GetMapping("/{name}")
+    public Product getProductByName(String name) {
+        return productService.getProductByName(name);
+    }
+    
 }
