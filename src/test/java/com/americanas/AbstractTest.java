@@ -21,15 +21,11 @@ import java.nio.charset.StandardCharsets;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @ContextConfiguration
-// @AutoConfigureWireMock(port = 9000)
 
 public abstract class AbstractTest {
 
     @Autowired
     protected MockMvc mockMvc;
-
-    // @Autowired
-    // protected WebTestClient webTestClient;
 
     private static final Configuration configuration = Configuration.builder()
             .jsonProvider(new JacksonJsonNodeJsonProvider())
