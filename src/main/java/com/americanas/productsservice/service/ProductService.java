@@ -33,12 +33,13 @@ public class ProductService {
 
     public Product create(Product product) {
         Product productAlreadyExists = repository.findByName(product.getName());
-
-        if (productAlreadyExists != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product already exists");
+        if (productAlreadyExists == null) {
+            if (product.isValid()) {
+                return repository.save(product);
+            }
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid required fields");
         }
-
-        return repository.save(product);
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product already exists");
     }
 
     public Product update(Product product) {

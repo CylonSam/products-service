@@ -3,8 +3,13 @@ package com.americanas.productsservice.domain;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 
 
@@ -20,9 +25,9 @@ public class Product {
     @NonNull
     @Column(name = "name", nullable = false)
     private String name;
-    @NonNull
+    @NotBlank
     @Column(name = "price", nullable = false)
-    private double price;
+    private Double price;
 
     public Product(long id, String name, double price) {
         this.id = id;
